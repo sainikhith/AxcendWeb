@@ -1,0 +1,130 @@
+
+
+
+<div class="container">
+  
+  
+  <div class="card">
+    <div class="card-body text-center">
+      <h1>Application Name </h1>
+    </div>
+  </div>
+<br>
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-3">
+          <div class="form-group">
+            <label>Upload File :</label>
+            <input type="file" class="btn btn-sm btn-primary" #fileInput  (change)="onFileChange($event)"/>
+          </div>
+        </div>&nbsp;&nbsp;
+        <div class="col-3">
+          <div class="Mt-20">&nbsp;</div>
+          <button type="submit" *ngIf="SavingForm.length>0" class="btn btn-success" (click)="FileDisplay()" style="font-family: 'Courier New', Courier, monospace;">Display Details</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="row" *ngIf="flag5">
+    <div class="col-3">
+      <div class="card">
+        <div class="card-body">
+         <div class="div_box">
+           <p>No of Students</p>
+           <div *ngIf="SavingForm.length>0">
+            <br>
+            <div class="text-center">
+                <h1 style="color: red;">
+                    {{SavingForm.length}}
+                </h1>
+            </div>
+            
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9" *ngIf="flag5">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr style="background: blue;">
+                <th scope="col">Sl.No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">City</th>
+                <th scope="col">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let r of SavingForm; let i = index">
+                    <td align="center">
+                      {{i+1}}
+                    </td>
+                    <td>{{r.name}}</td>
+                    <td>{{r.age}}</td>
+                    <td>{{r.city}}</td>
+                    <td><button class="btn-danger" (click)="removeRecord(i)" title="Remove-{{r.name}}"></button></td>
+                  </tr>
+            </tbody>
+          </table>
+          <button (click)="SavingDetails()" style="float: right;" class="btn btn-success btn-sm loginBtn minW80">Save</button>
+
+        </div>
+      </div>
+  </div>
+
+  </div>
+
+ 
+
+  <br>
+  <br>
+  <button (click)="Show(1)" *ngIf="!showTable" style="float: right;" class="btn btn-success btn-sm loginBtn minW80">Show Details</button>
+  <button (click)="Show(2)" *ngIf="showTable" style="float: right;" class="btn btn-success btn-sm loginBtn minW80">Hide Details</button>
+
+
+  <div *ngIf="showTable" class="table-responsive">
+
+    <table class="table  table-striped">
+      <thead>
+        
+        <tr id="trmain">
+          <th class="text-center" width="80">S.No.</th>
+
+          <th width="100">Name</th>
+          <th style="width: 110px;">Age</th>
+          <th style="width: 110px;">City</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of DbRecords;let i=index">
+
+          <td align="center">
+            {{i+1}}
+          </td>
+          <td>{{p.name}}</td>
+          <td>{{p.age}}</td>
+          <td>{{p.city}}</td>
+        </tr>
+
+
+
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="DBrecordFlag">
+    No Data Available!
+  </div>
+
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="medium" type="ball-scale-multiple">
+    <p style="color: white">Please Wait... </p>
+</ngx-spinner>
+
+

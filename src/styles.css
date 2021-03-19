@@ -1,0 +1,21 @@
+body{
+  margin: 10px;
+}
+.col-3{
+max-width: 25%;
+}
+.col-9{
+max-width: 75%;
+}
+.Mt-20{
+margin-top: 8px;
+}
+.div_box{
+min-height: 215px;
+}
+.card-body{
+padding:10px 15px;
+}
+.card-body p{
+margin: 0;
+}
